@@ -1,0 +1,76 @@
+$color-joke-title: #f38f7e;
+$color-joke-text: #8b8c8f;
+@font-face {
+  font-family: MHeiPRCMedium;
+  src: url("../assets/fonts/MHeiPRCMedium.ttf");
+}
+
+@mixin loader($path) {
+  background-image: url($path);
+}
+@mixin button-style($color, $textColor) {
+  background: #5dd3b6;
+  outline: none;
+  border: none;
+  padding: 1em;
+  font-size: 16px;
+  height: 50px;
+  width: 155px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 900;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.jokes__bg {
+  background-image: url("../assets/images/background.jpg");
+  font-family: MHeiPRCMedium;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .joke {
+    .joke__buttons {
+      margin-top: 1em;
+      .new__joke {
+        @include button-style(#5dd3b6, #fff);
+
+        transition: 1s ease-in-out;
+        &:hover {
+          color: #000;
+          background: burlywood;
+        }
+      }
+
+      .loader {
+        @include button-style(#7fd35d, #fff);
+        @include loader("../assets/images/loader.gif");
+        background-size: 55px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+
+  .joke__block {
+    width: 450px;
+    min-height: 125px;
+    background: white;
+    padding: 3em;
+    border-radius: 8px;
+    h2 {
+      color: $color-joke-title;
+      margin-bottom: 1.5em;
+    }
+    h3 {
+      color: $color-joke-text;
+      line-height: 1.4;
+    }
+  }
+}
